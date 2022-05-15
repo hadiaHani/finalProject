@@ -1,5 +1,4 @@
-// ignore_for_file: deprecated_member_use
-
+import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:final_project_shopping/pages/fpass.dart';
 import 'package:final_project_shopping/pages/home.dart';
 import 'package:final_project_shopping/pages/signup.dart';
@@ -112,7 +111,7 @@ class _SignInWidgitState extends State<SignInWidgit> {
                           ),
                           labelText: "Email",
                           labelStyle: TextStyle(fontSize: 20, color: b),
-                          hintText: "aaa@gmail.com",
+                          hintText: " ",
                           hintStyle: TextStyle(fontSize: 20, color: b),
                         ),
                         textAlign: TextAlign.left,
@@ -197,25 +196,17 @@ class _SignInWidgitState extends State<SignInWidgit> {
                       _formkey.currentState!.save();
 
                       if (_formkey.currentState!.validate()) {
-                        /*    Provider.of<Auth>(context, listen: false).login(
-                            _emailcontroller.text, _passwordcontroller.text);*/
-                        print("done");
-
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    const HomeScreen()));
+                        await AuthHelper.authHelper.login(
+                            _emailcontroller.text, _passwordcontroller.text);
+                        //  print("Login done");
+                        /*      Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const HomeScreen()));*/
                       }
 
                       setState(() {});
-                      /*   async  if (_formkey.currentState!.validate()) {
-                        var result = await FirebaseAuth.instance
-                            .signInWithEmailAndPassword(
-                                email: _emailcontroller.text,
-                                password: _passwordcontroller.text);
-                        print(result);
-                      }*/
                     },
                     color: const Color.fromRGBO(64, 216, 236, 1),
                     textColor: w,

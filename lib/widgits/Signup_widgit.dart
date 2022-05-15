@@ -1,5 +1,4 @@
-// ignore_for_file: deprecated_member_use
-
+import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:final_project_shopping/pages/signin.dart';
 
 import 'package:flutter/material.dart';
@@ -29,15 +28,6 @@ class _SignupWidgitState extends State<SignupWidgit> {
                     child: const Text("OK"))
               ],
             ));
-  }
-
-  @override
-  void dispose() {
-    _emailcontroller.dispose();
-
-    _passwordcontroller.dispose();
-
-    super.dispose();
   }
 
   bool visablePassword = true;
@@ -237,25 +227,16 @@ class _SignupWidgitState extends State<SignupWidgit> {
                     ),
                     onPressed: () async {
                       if (_formkey.currentState!.validate()) {
-                        // print("doneee");
+                        await AuthHelper.authHelper.creatUserUsingEmail(
+                            _emailcontroller.text, _passwordcontroller.text);
+                        //  print('Account successfully created');
+                        /*  Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const SignIn()));*/
+
                       }
-
-                      /*    Provider.of<Auth>(context, listen: false).signUp(
-                          _emailcontroller.text, _passwordcontroller.text);*/
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  const SignIn()));
-                      /*   try {
-                       
-                          /*     Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => ForgetPass()));*/
-
-                          print("doneee");
-                        }
-                      } catch (error) {
-                        _showErrorDialog(error as String);*/
                     },
                     color: const Color.fromRGBO(64, 216, 236, 1),
                     textColor: w,

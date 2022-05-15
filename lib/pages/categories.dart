@@ -1,5 +1,4 @@
 import 'package:final_project_shopping/model/clothes.dart';
-import 'package:final_project_shopping/pages/home.dart';
 import 'package:final_project_shopping/widgits/clothes_widgit.dart';
 import 'package:flutter/material.dart';
 

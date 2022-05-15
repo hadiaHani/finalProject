@@ -1,5 +1,7 @@
+import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:final_project_shopping/data/clothes_data.dart';
 import 'package:final_project_shopping/pages/categories.dart';
+import 'package:final_project_shopping/pages/signup.dart';
 import 'package:flutter/material.dart';
 
 class CategoryWidgit extends StatelessWidget {
@@ -23,9 +25,17 @@ class CategoryWidgit extends StatelessWidget {
               actions: [
                 IconButton(
                     color: Colors.black,
-                    onPressed: () {},
+                    onPressed: () async {
+                      await AuthHelper.authHelper.sognOut();
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const Signup()));
+                    },
                     icon: const Icon(
-                      Icons.shopping_cart_outlined,
+                      Icons.logout,
                     )),
               ],
             ),
