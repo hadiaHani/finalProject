@@ -8,7 +8,6 @@ import 'package:final_project_shopping/widgits/category_widgit.dart';
 import 'package:final_project_shopping/widgits/clothes_widgit.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class Categories extends StatefulWidget {
   Categories({Key? key}) : super(key: key);
 

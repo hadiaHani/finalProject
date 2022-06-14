@@ -1,4 +1,3 @@
-import 'package:final_project_shopping/data/clothes_data.dart';
 import 'package:final_project_shopping/data/sharedHelper.dart';
 import 'package:final_project_shopping/model/clothes.dart';
 import 'package:final_project_shopping/pages/home.dart';
@@ -56,7 +55,6 @@ class Cart extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.only(right: 2, left: 2, top: 5),
                       height: 150,
-                      //6 color: const Color.fromARGB(192, 218, 66, 210),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [

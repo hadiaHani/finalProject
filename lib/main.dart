@@ -1,5 +1,4 @@
 import 'package:final_project_shopping/data/sharedHelper.dart';
-import 'package:final_project_shopping/pages/home.dart';
 import 'package:final_project_shopping/pages/signin.dart';
 import 'package:final_project_shopping/pages/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -20,12 +19,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Splash(),
-
-        //   home: const HomeScreen(),
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const Splash(),
         routes: {'login': (context) => const SignIn()});
   }
 }

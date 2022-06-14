@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:final_project_shopping/pages/signin.dart';
 import 'package:flutter/material.dart';
-//import 'package:login_register_auth/ui/widgets/original_button.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);

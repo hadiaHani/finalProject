@@ -1,10 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'dart:developer';
 
 import 'package:final_project_shopping/pages/home.dart';
 import 'package:final_project_shopping/pages/signin.dart';
-import 'package:final_project_shopping/pages/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -63,8 +60,6 @@ class AuthHelper {
               builder: (BuildContext context) => const HomeScreen()));
       return credential.user?.uid;
     } catch (e) {
-      //  Navigator.of(context).pop();
-
       await showDialog(
         context: context,
         builder: (context) => AlertDialog(

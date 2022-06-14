@@ -64,15 +64,11 @@ class _SignupWidgitState extends State<SignupWidgit> {
               ),
             ),
             padding: const EdgeInsets.only(top: 20.0),
-            //   height: 550,
             width: MediaQuery.of(context).size.width,
             child: Column(children: [
               const Text(
                 "Sign up",
-                style: TextStyle(
-                    //  fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colors.black),
+                style: TextStyle(fontSize: 20, color: Colors.black),
               ),
               Container(
                 margin: const EdgeInsets.only(
@@ -129,7 +125,6 @@ class _SignupWidgitState extends State<SignupWidgit> {
                           hintText: "Enter your Phone",
                           hintStyle: TextStyle(fontSize: 20, color: b),
                           prefixText: "+970 ",
-                          // prefixIcon: Icon(Icons.phone, color: bl)
                         ),
                         keyboardType: TextInputType.number,
                         style: TextStyle(color: b),

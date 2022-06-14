@@ -1,8 +1,6 @@
 import 'dart:developer';
-
 import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:final_project_shopping/pages/fpass.dart';
-import 'package:final_project_shopping/pages/home.dart';
 import 'package:final_project_shopping/pages/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -190,12 +188,6 @@ class _SignInWidgitState extends State<SignInWidgit> {
                             context);
                         log("email is " + _emailcontroller.text.trim());
                         log("pass is " + _passwordcontroller.text.trim());
-                        //  print("Login done");
-                        /*  Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    const HomeScreen()));*/
                       }
 
                       setState(() {});
