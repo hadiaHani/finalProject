@@ -1,4 +1,6 @@
 class Clothes {
+  bool isComplete = false;
+
   String img;
   String name;
   String price;
