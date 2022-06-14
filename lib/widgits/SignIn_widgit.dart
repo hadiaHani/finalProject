@@ -30,7 +30,7 @@ class _SignInWidgitState extends State<SignInWidgit> {
     super.dispose();
   }
 
-  void _showErrorDialog(String message) {
+  void showDialogs(String message) {
     showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
@@ -199,11 +199,11 @@ class _SignInWidgitState extends State<SignInWidgit> {
                         await AuthHelper.authHelper.login(
                             _emailcontroller.text, _passwordcontroller.text);
                         //  print("Login done");
-                        /*      Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const HomeScreen()));*/
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const HomeScreen()));
                       }
 
                       setState(() {});

@@ -1,4 +1,6 @@
-import 'package:final_project_shopping/pages/signup.dart';
+import 'dart:developer';
+
+import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:flutter/material.dart';
 
 class FGPass extends StatefulWidget {
@@ -66,6 +68,7 @@ class _FGPassState extends State<FGPass> {
                 child: Form(
                   key: _formkey,
                   child: TextFormField(
+                    controller: myController,
                     validator: (value) {
                       if (value!.isEmpty || !value.contains('@')) {
                         return 'Invalid email!';
@@ -118,10 +121,11 @@ class _FGPassState extends State<FGPass> {
               ),
               FlatButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => const Signup()));
+                  AuthHelper.authHelper.forgetPassword(myController.text);
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //         builder: (BuildContext context) => const Signup()));
 
                   setState(() {});
                 },

@@ -16,11 +16,11 @@ class _SignupWidgitState extends State<SignupWidgit> {
   final TextEditingController _emailcontroller = TextEditingController();
 
   final TextEditingController _passwordcontroller = TextEditingController();
-  void _showErrorDialog(String message) {
+  void _showDialogs(String message) {
     showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
-              title: const Text("An Error Occurred!"),
+              title: const Text("Message!"),
               content: Text(message),
               actions: [
                 FlatButton(
@@ -229,7 +229,7 @@ class _SignupWidgitState extends State<SignupWidgit> {
                       if (_formkey.currentState!.validate()) {
                         await AuthHelper.authHelper.creatUserUsingEmail(
                             _emailcontroller.text, _passwordcontroller.text);
-                        //  print('Account successfully created');
+                        _showDialogs('Account successfully created');
                         /*  Navigator.push(
                               context,
                               MaterialPageRoute(

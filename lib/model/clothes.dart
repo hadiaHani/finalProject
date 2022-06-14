@@ -2,6 +2,6 @@ class Clothes {
   String img;
   String name;
   String price;
-
-  Clothes(this.img, this.name, this.price);
+  String category;
+  Clothes(this.img, this.name, this.price, this.category);
 }

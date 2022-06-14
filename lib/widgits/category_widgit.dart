@@ -1,11 +1,35 @@
+import 'dart:developer';
+
 import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:final_project_shopping/data/clothes_data.dart';
+import 'package:final_project_shopping/data/sharedHelper.dart';
 import 'package:final_project_shopping/pages/categories.dart';
-import 'package:final_project_shopping/pages/signup.dart';
+import 'package:final_project_shopping/pages/signin.dart';
+import 'package:final_project_shopping/widgits/cart.dart';
+
 import 'package:flutter/material.dart';
 
-class CategoryWidgit extends StatelessWidget {
+class CategoryWidgit extends StatefulWidget {
   const CategoryWidgit({Key? key}) : super(key: key);
+
+  @override
+  State<CategoryWidgit> createState() => _CategoryWidgitState();
+}
+
+class _CategoryWidgitState extends State<CategoryWidgit> {
+  void _showDialogs(String message) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+              title: const Text("Message!"),
+              content: Text(message),
+              actions: [
+                FlatButton(
+                    onPressed: () => {Navigator.of(context).pop()},
+                    child: const Text("OK"))
+              ],
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +48,28 @@ class CategoryWidgit extends StatelessWidget {
               ),
               actions: [
                 IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Cart()));
+                    },
+                    color: Colors.black,
+                    icon: const Icon(
+                      Icons.shopping_cart_outlined,
+                    )),
+                IconButton(
                     color: Colors.black,
                     onPressed: () async {
-                      await AuthHelper.authHelper.sognOut();
+                      await AuthHelper.authHelper.signOut();
 
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  const Signup()));
+                                  const SignIn()));
+
+                      _showDialogs("Thank you .. Visit us again");
                     },
                     icon: const Icon(
                       Icons.logout,
@@ -63,6 +100,9 @@ class CategoryWidgit extends StatelessWidget {
                           width: double.infinity,
                           child: GestureDetector(
                             onTap: () {
+                              log("hhhhhhhhhhhhhhhhhhhhhhhh");
+                              SharedHelper.authHelper
+                                  .setTitle("${categories[index]['title']}");
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
