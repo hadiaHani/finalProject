@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:final_project_shopping/pages/fpass.dart';
 import 'package:final_project_shopping/pages/home.dart';
@@ -28,20 +30,6 @@ class _SignInWidgitState extends State<SignInWidgit> {
     _passwordcontroller.dispose();
 
     super.dispose();
-  }
-
-  void showDialogs(String message) {
-    showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-              title: const Text("An Error Occurred!"),
-              content: Text(message),
-              actions: [
-                FlatButton(
-                    onPressed: () => {Navigator.of(context).pop()},
-                    child: const Text("OK"))
-              ],
-            ));
   }
 
   bool visablePassword = true;
@@ -197,13 +185,17 @@ class _SignInWidgitState extends State<SignInWidgit> {
 
                       if (_formkey.currentState!.validate()) {
                         await AuthHelper.authHelper.login(
-                            _emailcontroller.text, _passwordcontroller.text);
+                            _emailcontroller.text.trim(),
+                            _passwordcontroller.text.trim(),
+                            context);
+                        log("email is " + _emailcontroller.text.trim());
+                        log("pass is " + _passwordcontroller.text.trim());
                         //  print("Login done");
-                        Navigator.push(
+                        /*  Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    const HomeScreen()));
+                                    const HomeScreen()));*/
                       }
 
                       setState(() {});

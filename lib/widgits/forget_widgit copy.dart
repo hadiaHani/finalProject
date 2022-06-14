@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:final_project_shopping/data/authHelper.dart';
+import 'package:final_project_shopping/pages/signin.dart';
 import 'package:flutter/material.dart';
 
 class FGPass extends StatefulWidget {
@@ -12,6 +13,32 @@ class FGPass extends StatefulWidget {
 
 class _FGPassState extends State<FGPass> {
   final _formkey = GlobalKey<FormState>();
+  final TextEditingController _emailcontroller = TextEditingController();
+  @override
+  void dispose() {
+    _emailcontroller.dispose();
+    super.dispose();
+  }
+
+  void _showDialogs(String message) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+              title: const Text("Message!"),
+              content: Text(message),
+              actions: [
+                FlatButton(
+                    onPressed: () => {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const SignIn()))
+                        },
+                    child: const Text("OK"))
+              ],
+            ));
+  }
 
   bool visablePassword = true;
   var r = Colors.red;
@@ -109,7 +136,9 @@ class _FGPassState extends State<FGPass> {
                     ),
                     onPressed: () {
                       if (_formkey.currentState!.validate()) {
-                        print("done");
+                        AuthHelper.authHelper
+                            .forgetPassword(myController.text.trim());
+                        _showDialogs("your new passwsord sent to your email");
                       }
                     },
                     color: const Color.fromRGBO(64, 216, 236, 1),
@@ -122,10 +151,6 @@ class _FGPassState extends State<FGPass> {
               FlatButton(
                 onPressed: () {
                   AuthHelper.authHelper.forgetPassword(myController.text);
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (BuildContext context) => const Signup()));
 
                   setState(() {});
                 },

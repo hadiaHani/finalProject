@@ -17,20 +17,6 @@ class CategoryWidgit extends StatefulWidget {
 }
 
 class _CategoryWidgitState extends State<CategoryWidgit> {
-  void _showDialogs(String message) {
-    showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-              title: const Text("Message!"),
-              content: Text(message),
-              actions: [
-                FlatButton(
-                    onPressed: () => {Navigator.of(context).pop()},
-                    child: const Text("OK"))
-              ],
-            ));
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -62,14 +48,11 @@ class _CategoryWidgitState extends State<CategoryWidgit> {
                     color: Colors.black,
                     onPressed: () async {
                       await AuthHelper.authHelper.signOut();
-
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
                                   const SignIn()));
-
-                      _showDialogs("Thank you .. Visit us again");
                     },
                     icon: const Icon(
                       Icons.logout,

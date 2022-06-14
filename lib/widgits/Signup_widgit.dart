@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:final_project_shopping/data/authHelper.dart';
 import 'package:final_project_shopping/pages/signin.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 
@@ -226,17 +229,16 @@ class _SignupWidgitState extends State<SignupWidgit> {
                       style: TextStyle(fontSize: 25),
                     ),
                     onPressed: () async {
+                      _formkey.currentState!.save();
+                      log("email is " + _emailcontroller.text);
+                      log("pass ia" + _passwordcontroller.text);
                       if (_formkey.currentState!.validate()) {
                         await AuthHelper.authHelper.creatUserUsingEmail(
-                            _emailcontroller.text, _passwordcontroller.text);
-                        _showDialogs('Account successfully created');
-                        /*  Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const SignIn()));*/
-
+                            _emailcontroller.text.trim(),
+                            _passwordcontroller.text.trim(),
+                            context);
                       }
+                      setState(() {});
                     },
                     color: const Color.fromRGBO(64, 216, 236, 1),
                     textColor: w,
